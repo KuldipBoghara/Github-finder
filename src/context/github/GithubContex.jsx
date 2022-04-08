@@ -3,8 +3,8 @@ import githubReducer from './Githubreducer';
 
 const GithubContext = createContext();
 
-const GITHUB_URL = process.env.REACT_APP_GITHUB_URL;
-const GITHUB_TOKEN = process.env.REACT_APP_GITHUB_TOKEN;
+/* const GITHUB_URL = process.env.REACT_APP_GITHUB_URL;
+const GITHUB_TOKEN = process.env.REACT_APP_GITHUB_TOKEN; */
 
 //provider function
 export const GithubProvider = ({ children }) => {
@@ -22,7 +22,7 @@ export const GithubProvider = ({ children }) => {
   const [state, dispatch] = useReducer(githubReducer, initialState);
 
   //Set Loading
-  const setLoading = () => dispatch({ type: 'SET_LOADING' });
+  //const setLoading = () => dispatch({ type: 'SET_LOADING' });
 
   /* //Fetch Users (for testing , gets initial users)
   const fetchUsers = async () => {
@@ -40,7 +40,7 @@ export const GithubProvider = ({ children }) => {
   }; */
 
   //Search Users
-  const searchUsers = async (text) => {
+  /* const searchUsers = async (text) => {
     setLoading();
 
     const params = new URLSearchParams({
@@ -57,9 +57,9 @@ export const GithubProvider = ({ children }) => {
       type: 'GET_USERS',
       payload: items
     });
-  };
+  }; */
 
-  //Single User
+  /* //Single User
   const getUser = async (login) => {
     setLoading();
 
@@ -102,21 +102,24 @@ export const GithubProvider = ({ children }) => {
       payload: data
     });
   };
-
+ */
   //clear Users
-  const clearUsers = () => dispatch({ type: 'CLEAR_USERS' });
+  //const clearUsers = () => dispatch({ type: 'CLEAR_USERS' });
 
   return (
     <GithubContext.Provider
       value={{
-        users: state.users,
+        /* users: state.users,
         loading: state.loading,
         user: state.user,
         repos: state.repos,
-        searchUsers,
+         */
+        ...state,
+        dispatch
+        /*  searchUsers, 
         clearUsers,
         getUser,
-        getUserRepos
+        getUserRepos*/
       }}
     >
       {children}
