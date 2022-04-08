@@ -9,7 +9,7 @@ export const AlertProvider = ({ children }) => {
 
   const [state, dispatch] = useReducer(alertReducer, initialState);
 
-  //Set an Alert
+  //Set an Alert for search
   const setAlert = (msg, type) => {
     dispatch({
       type: 'SET_ALERT',

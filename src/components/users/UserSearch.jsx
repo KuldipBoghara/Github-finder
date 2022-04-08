@@ -7,8 +7,6 @@ import { searchUsers } from '../../context/github/GithubActions';
 function UserSearch() {
   const [text, setText] = useState('');
 
-  /* Without Refoctoring   
-const { users, searchUsers, clearUsers } = useContext(GithubContext); */
   const { users, dispatch } = useContext(GithubContext);
 
   const { setAlert } = useContext(AlertContext);
